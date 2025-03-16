@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+ <template id="portal_my_purchase_orders" name="My Purchase Orders">
+      <t t-call="portal.portal_layout">
+          <html>
+
+
+           <head>
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous"/>
+                 <script src="https://kit.fontawesome.com/24f4200f37.js" crossorigin="anonymous"></script>
+           </head>
+           <body>
+          <t t-set="breadcrumbs_searchbar" t-value="True"/>
+        <div class="d-flex justify-content-between py-3">
+             <div>
+                <nav class="navbar">
+                  <form class="form-inline">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
+                  </form>
+                </nav>
+             </div>
+            <div>
+                <i class="fa-solid fa-bell"></i>
+                <i class="fa-solid fa-user mx-5"></i>
+             </div>
+        </div>
+       <div class="d-flex justify-content-between p-3 border border-3 border-right-0 border-left-0">
+             <div>
+                <h3> <i class="fa-solid fa-arrow-left"></i> All Requisition</h3>
+             </div>
+            <div>
+                <a href="/portal_purchase_form" class="btn btn-dark btn-lg active" role="button" aria-pressed="true"><i class="fa-solid fa-plus"></i> Add New Requisition</a>
+             </div>
+       </div>
+
+
+          <t t-call="portal.portal_searchbar">
+              <t t-set="title">Purchase Orders</t>
+          </t>
+
+          <t t-if="not orders">
+              <p class="alert alert-warning">There are currently no purchase orders for your account.</p>
+          </t>
+
+          <t t-if="orders" t-call="portal.portal_table">
+              <table class="table table-striped nowrap">
+              <thead class="border">
+                  <tr class="active">
+                      <th>
+                          <span class='d-none d-md-inline'>Purchase Order #</span>
+                          <span class='d-block d-md-none'>Ref.</span>
+                      </th>
+                      <th>
+                          <span class='d-none d-md-inline'>Product</span>
+                      </th>
+                      <th class="text-center">
+                          <span class='d-none d-md-inline'>Vendor</span>
+                      </th>
+                      <th class="text-end">
+                          <span class='d-none d-md-inline'>Confirmation Date</span>
+                          <span class='d-block d-md-none'>Confirmation</span>
+                      </th>
+                      <th class="text-center"/>
+                      <th class="text-center">Total</th>
+                      <th class="text-center">
+                          <span class='d-none d-md-inline'>Order Status</span>
+                      </th>
+                  </tr>
+              </thead>
+              <t t-foreach="orders" t-as="order">
+                  <tr class="border">
+                      <td><a t-att-href="order.get_portal_url()"><t t-esc="order.name"/></a></td>
+                      <td class="text-start"><span t-field="order.product_id"/></td>
+                      <td class="text-center"><span t-field="order.partner_id"/></td>
+                      <td class="text-end">
+                          <span t-field="order.date_approve" t-options="{'widget': 'date'}"/>&amp;nbsp;
+                          <span class='d-none d-md-inline' t-field="order.date_approve" t-options="{'time_only': True}"/>
+                      </td>
+                      <td class="text-center">
+                          <span t-if="order.invoice_status == 'to invoice'" class="badge rounded-pill text-bg-info">
+                              <i class="fa fa-fw fa-file-text" role="img" aria-label="Waiting for Bill" title="Waiting for Bill"></i><span class="d-none d-md-inline"> Waiting for Bill</span>
+                          </span>
+                          <span t-if="order.state == 'cancel'" class="badge rounded-pill text-bg-secondary">
+                              <i class="fa fa-fw fa-remove" role="img" aria-label="Cancelled" title="Cancelled"></i><span class="d-none d-md-inline"> Cancelled</span>
+                          </span>
+                          <span t-if="order.state == 'done'" class="badge rounded-pill text-bg-success">
+                              <i class="fa fa-fw fa-check" role="img" aria-label="Done" title="Done"></i><span class="d-none d-md-inline"> Done</span>
+                          </span>
+                      </td>
+                      <td class="text-center"><span t-field="order.amount_total"/></td>
+                      <td class="text-center"><span t-field="order.state"/></td>
+                  </tr>
+              </t>
+              </table>
+          </t>
+           </body>
+          </html>
+      </t>
+  </template>
+
+
+  
+</odoo>

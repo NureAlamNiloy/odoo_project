@@ -1,0 +1,13 @@
+<odoo>
+
+    <template id="portal_my_home_inherit" inherit_id="portal.portal_my_home">
+        <xpath expr="//div[@id='portal_common_category']" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Purchase Portal</t>
+                <t t-set="text">Purchase Portal</t>
+                <t t-set="url" t-value="'/portal_purchase_form'"/>
+                <t t-set="config_card" t-value="True"/>
+            </t>
+        </xpath>
+    </template>
+</odoo>

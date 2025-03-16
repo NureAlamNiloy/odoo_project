@@ -1,0 +1,134 @@
+<odoo>
+    <data>
+        <!-- Define your custom template -->
+        <template id="purchase_portal_from" name="Purchase Portal">
+            <t t-call="website.layout">
+                <html>
+                    <head>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous"/>
+                         <script src="https://kit.fontawesome.com/24f4200f37.js" crossorigin="anonymous"></script>
+                   </head>
+
+                    <body>
+
+                         <div class="row h-100">
+                            <div class="col-2 border border-3 border-top-0 border-start-0 border-bottom-0 border-dark bg-light p-4" >
+                                 <img src="https://bdcalling.com/wp-content/themes/bdcalling/assets/images/Bdcalling%20Black%20logo.png" class="my-4 w-100"/>
+                                <div class="d-grid gap-2">
+                                  <a href="/portal_purchase_form" class="btn btn-primary mb-3">Purchase Form</a>
+                                </div>
+                                 <div class="d-grid gap-2">
+                                  <a href="/niloy_portal" class="btn btn-primary ">All Requisition</a>
+                                </div>
+                            </div>
+                             <div class="col">
+
+                                 <div class="d-flex justify-content-between py-3">
+                                     <div>
+                                        <nav class="navbar">
+                                          <form class="form-inline">
+                                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
+                                          </form>
+                                        </nav>
+                                     </div>
+                                    <div>
+                                        <i class="fa-solid fa-bell"></i>
+                                        <i class="fa-solid fa-user mx-5"></i>
+                                     </div>
+                                </div>
+                                 <div class="d-flex justify-content-between p-3 border border-3 border-right-0 border-left-0">
+                                     <div>
+                                        <h3> <i class="fa-solid fa-arrow-left"></i>  Requisition Form</h3>
+                                     </div>
+                                    <div>
+                                        <a href="/niloy_portal" class="btn btn-dark btn-lg active" role="button" aria-pressed="true"><i class="fa-solid fa-list"></i> View List</a>
+                                     </div>
+                               </div>
+
+
+                                 <form method="post" action="/purchase_form/submit">
+                                 <div  class="m-3 p-5 bg-light">
+                                     <h2>Fill This Form</h2>
+                                  <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                      <label for="employee_id">Employee ID</label>
+                                        <input t-att-value="employee_id.barcode" type="text" name="employee_id" class="form-control" readonly="True" id="employee_id"/>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                      <label for="employee_name">Employee Name</label>
+                                      <input type="text" class="form-control" t-att-value="employee_id.name" readonly="True" id="employee_name" placeholder="Nure Alam Niloy"/>
+                                    </div>
+                                  </div>
+
+                                 <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                      <label for="employee_phone">Employee Phone No.</label>
+                                      <input type="text" t-att-value="employee_id.work_phone" readonly="True" class="form-control" id="employee_phone"/>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                      <label for="employee_job_id">Job ID</label>
+                                      <input type="text" class="form-control" t-att-value="employee_id.barcode" readonly="True" id="employee_job_id" placeholder="DIL-8037"/>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                      <label for="employee_company">Company Name</label>
+                                      <input name="employee_company" type="text" t-att-value="employee_id.company_id.name" readonly="True" class="form-control" id="employee_company" placeholder="Data Insight LLC"/>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                      <label for="employee_team">Team Name</label>
+                                      <input type="text" t-att-value="employee_id.department_id.name" readonly="True" class="form-control" id="employee_team" placeholder="Select Team Name"/>
+                                    </div>
+                                 </div>
+                                <!--  Vandor info-->
+                                 <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                      <label for="vendor">Vendor</label>
+                                      <input name="vendor_name2" type="text" class="form-control" id="vendor" placeholder="vendor name"/>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                      <label for="vendor_refarance">vendor Reference</label>
+                                      <input type="text" name="vendor_ref" class="form-control" id="vendor_refarance" placeholder="Reference"/>
+                                    </div>
+                                 </div>
+                                </div>
+
+                                     <div  class="m-3 p-5 bg-light ">
+                                         <div class="form-row d-flex align-items-center">
+                                            <div class="form-group col">
+                                              <label for="product_name">Product</label>
+                                              <input type="text"  t-att-value="product" name="product2" class="form-control" id="product_name" placeholder="Product"/>
+                                            </div>
+                                            <div class="form-group col">
+                                              <label for="description">Description</label>
+                                              <input type="text" name="description" class="form-control" id="description" placeholder="Description"/>
+                                            </div>
+                                             <div class="form-group col">
+                                              <label for="qty">Qty</label>
+                                              <input type="text" name="quentity" class="form-control" id="qty" placeholder="1"/>
+                                            </div>
+                                             <div class="form-group col">
+                                              <label for="unit_price">Unit Price</label>
+                                              <input type="text" name="unit_price" class="form-control" id="unit_price" placeholder="unit price"/>
+                                            </div>
+                                             <div class="form-group col">
+                                              <a href="#" class="btn btn-danger btn-md active" role="button" aria-pressed="true"> <i class="fa-solid fa-trash"></i> Remove</a>
+                                            </div>
+                                        </div>
+                                         <div class="Col-4">
+                                             <button type="submit" class="btn btn-dark btn-lg active" role="button" aria-pressed="true">Submit</button>
+                                         </div>
+                                     </div>
+
+                                </form>
+
+                            </div>
+                        </div>
+                    </body>
+
+                </html>
+            </t>
+        </template>
+    </data>
+</odoo>
