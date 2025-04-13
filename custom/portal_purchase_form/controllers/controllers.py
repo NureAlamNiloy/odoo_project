@@ -52,7 +52,5 @@ class PortalPurchaseForm(http.Controller):
             })]
         })
 
-        return "Purchase order created successfully"
-
-
+        return request.redirect("/niloy_portal")
 

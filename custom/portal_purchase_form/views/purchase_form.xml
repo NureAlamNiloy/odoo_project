@@ -98,7 +98,13 @@
                                          <div class="form-row d-flex align-items-center">
                                             <div class="form-group col">
                                               <label for="product_name">Product</label>
-                                              <input type="text"  t-att-value="product" name="product2" class="form-control" id="product_name" placeholder="Product"/>
+                                                <select class="form-control" name="product2" required="required">
+                                                    <option value="">Select Product</option>
+                                                    <t t-foreach="products" t-as="product">
+                                                        <option t-att-value="product.id"><t t-esc="product.name"/></option>
+                                                    </t>
+                                                </select>
+<!--                                              <input type="text"  t-att-value="product" name="product2" class="form-control" id="product_name" placeholder="Product"/>-->
                                             </div>
                                             <div class="form-group col">
                                               <label for="description">Description</label>
