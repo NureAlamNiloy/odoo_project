@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="library_action" model="ir.actions.act_window">
+        <field name="name">Library Management System</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">library.form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p>Create a window action in library_form file</p>
+        </field>
+    </record>
+</odoo>
+

@@ -10,10 +10,12 @@
     'summary': 'Library Management System.. This is for my day01 task',
     'website': 'https://www.linkedin.com/in/NureAlamNiloy',
     'depends': [
-        'base_setup',
+        'base', 
     ],
     'data': [ 
-
+        'views/book.xml',
+        'views/library_form.xml',
+        'views/menu.xml'
     ],
     'installable': True,
     'application': True,
