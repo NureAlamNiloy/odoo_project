@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-
     <record id="author_tree_view" model="ir.ui.view"> 
         <field name="name">library.form.tree</field> <!-- View name -->
         <field name="model">library.form</field> <!-- Target model -->
