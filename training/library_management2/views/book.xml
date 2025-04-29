@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <record id="book_menu" model="ir.actions.act_window">
+
+   <record id="book_tree_view" model="ir.ui.view"> 
+        <field name="name">book.form.tree</field> <!-- View name -->
+        <field name="model">book.form</field> <!-- Target model -->
+        <field name="arch" type="xml"> <!-- Actual View -->
+            <tree>
+                <field name="book_name"/>
+                <field name="serial_number"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="book_form_view" model="ir.ui.view"> 
+        <field name="name">book.form.form</field> <!-- View name -->
+        <field name="model">book.form</field> <!-- Target model -->
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="book_name"/>
+                            <field name="serial_number"/>
+                            <field name="author_ids"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="book_action" model="ir.actions.act_window">
         <field name="name">Book Info</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">book.form</field>
@@ -10,4 +40,6 @@
             <p>Create a window action in library_form file</p>
         </field>
     </record>
+
+    <menuitem id="book_menu" parent="library_main_menu" action="book_action" name="Books"/>
 </odoo>

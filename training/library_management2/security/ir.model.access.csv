@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_library.form,access_library_form,library_management2.model_library_form,base.group_user,1,1,1,1
+
+access_book.form,access_book_form,library_management2.model_book_form,base.group_user,1,1,1,1

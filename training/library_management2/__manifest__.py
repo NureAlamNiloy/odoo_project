@@ -13,6 +13,7 @@
         'base', 
     ],
     'data': [ 
+        'security/ir.model.access.csv',
         'views/book.xml',
         'views/library_form.xml',
         'views/menu.xml'

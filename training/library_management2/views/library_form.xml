@@ -1,5 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+
+    <record id="author_tree_view" model="ir.ui.view"> 
+        <field name="name">library.form.tree</field> <!-- View name -->
+        <field name="model">library.form</field> <!-- Target model -->
+        <field name="arch" type="xml"> <!-- Actual View -->
+            <tree>
+                <field name="name"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="author_form_view" model="ir.ui.view"> 
+        <field name="name">library.form.form</field> <!-- View name -->
+        <field name="model">library.form</field> <!-- Target model -->
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                            <field name="notes"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Author book">
+                            <field name="book_ids">
+                                <tree editable="bottom">
+                                    <field name="book_name"/>
+                                    <field name="serial_number"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
     <record id="library_action" model="ir.actions.act_window">
         <field name="name">Library Management System</field>
         <field name="type">ir.actions.act_window</field>

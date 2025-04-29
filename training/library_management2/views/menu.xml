@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <menuitem id="book_menu" action="book_action" name="Books"/>
     <menuitem id="library_main_menu" name="Library Management"/>
     <menuitem id="author_main_menu" parent="library_main_menu" name="Author"/>   
     <menuitem id="author_book_menu" parent="author_main_menu" action="library_action" name="Author Books"/>
