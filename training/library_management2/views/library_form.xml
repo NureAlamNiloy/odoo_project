@@ -50,5 +50,7 @@
             <p>Create a window action in library_form file</p>
         </field>
     </record>
+
+    
 </odoo>
 

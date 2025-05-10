@@ -11,5 +11,5 @@ class LibraryFrom(models.Model):
 
 
     # student_ids = fields.One2many('related.model', 'inverse_field_name', string="Label")
-    book_ids = fields.One2many('book.form', 'author_ids', string="Author")
+    book_ids = fields.One2many('book.form', 'author_ids', string="Book")
 

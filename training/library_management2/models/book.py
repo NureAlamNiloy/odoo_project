@@ -9,5 +9,5 @@ class BookModelForm(models.Model):
     serial_number = fields.Char(string="Serial Number")
 
     # teacher_id = fields.Many2one('related.model', string="label")
-    author_ids =fields.Many2one('library.form', string="Book")
+    author_ids =fields.Many2one('library.form', string="Author")  
     

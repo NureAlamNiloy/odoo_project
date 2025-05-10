@@ -41,5 +41,5 @@
         </field>
     </record>
 
-    <menuitem id="book_menu" parent="library_main_menu" action="book_action" name="Books"/>
+    
 </odoo>
