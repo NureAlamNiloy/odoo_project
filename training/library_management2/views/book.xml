@@ -18,6 +18,10 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
+                    <header>
+                        <button name="orm_search" string="Search" type="object" class="oe_highlight"/>
+                        <button name="orm_browse" string="Browse" type="object" class="oe_highlight"/>
+                    </header>
                     <group>
                         <group>
                             <field name="book_name"/>

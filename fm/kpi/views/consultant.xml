@@ -1,0 +1,16 @@
+<odoo>
+    <record id="view_book_form_inherit" model="ir.ui.view"> <!-- Unique Id and inserting a new record in the ir.ui.view model, which holds all UI views in Odoo. -->
+        <field name="name">sale.order.form</field> <!--Name as your wish-->
+        <field name="model">sale.order</field> <!--Model you Change/inharit -->
+        <field name="inherit_id" ref="sale.view_order_form"/> <!--Whch view you want to change collect this from debug mode views-->
+        <field name="arch" type="xml"> <!-- To modify the actual XML layout of the view -->
+        <!--field name and positiuon attributes means want to chage attribute invisible="1"-->
+            <xpath expr="//field[@name='user_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="consultant"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

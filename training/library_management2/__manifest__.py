@@ -10,13 +10,14 @@
     'summary': 'Library Management System.. This is for my day01 task',
     'website': 'https://www.linkedin.com/in/NureAlamNiloy',
     'depends': [
-        'base', 
+        'base', 'stock', 'product'
     ],
     'data': [ 
         'security/ir.model.access.csv',
         'views/book.xml',
         'views/library_form.xml',
         'views/menu.xml',
+        'views/booklist.xml',
     ],
     'installable': True,
     'application': True,
