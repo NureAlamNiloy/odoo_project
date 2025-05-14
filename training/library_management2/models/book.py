@@ -1,4 +1,6 @@
-from odoo import models, fields
+from odoo import models, fields, api
+from datetime import date
+from odoo.exceptions import ValidationError
 
 # Book model
 class BookModelForm(models.Model):
@@ -8,10 +10,33 @@ class BookModelForm(models.Model):
 
     book_name = fields.Char(string="Book Name")
     serial_number = fields.Char(string="Serial Number")
+    total_page = fields.Integer(string="Total Pages")
+    published_date = fields.Date(string="Published Date")
+    book_age = fields.Char(string="Age of book", compute="total_age", store=True)
 
     # teacher_id = fields.Many2one('related.model', string="label")
     author_ids =fields.Many2one('library.form', string="Author")  
     
+    @api.depends('published_date') #Which field we depend for our operation 
+    def total_age(self):
+        if self.published_date:
+            # self.book_age = f"{date.today().year - self.published_date.year} Y, {date.today().month - self.published_date.month} M, {date.today().day - self.published_date.day} D"
+            self.book_age = date.today().day - self.published_date.day 
+        else:
+            self.book_age = 0
+    
+    @api.onchange('book_name')
+    def auto_serial_number(self):
+        if self.book_name and not self.serial_number:
+            self.serial_number = f"{self.book_name[:2]}/{date.today().day}/{date.today().month}/{date.today().year}"
+
+
+    @api.constrains('total_page', 'published_date')
+    def validation(self):
+        if self.total_page <10:
+            raise ValidationError("Total pages must be at least 10.")
+
+
     def orm_search(self):
         book_search = self.env["book.form"].search([])
         print("Search ORM output ", book_search)
@@ -24,6 +49,8 @@ class BookModelForm(models.Model):
         for name in book_browse:
             print(f"book name {name.book_name} Author > {name.author_ids.name}")
 
+
+    
 
 
 class inheritInventory(models.Model):

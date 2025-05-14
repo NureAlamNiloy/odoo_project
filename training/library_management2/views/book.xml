@@ -26,6 +26,9 @@
                         <group>
                             <field name="book_name"/>
                             <field name="serial_number"/>
+                            <field name="total_page"/>
+                            <field name="published_date"/>
+                            <field name="book_age"/>
                             <field name="author_ids"/>
                         </group>
                     </group>
