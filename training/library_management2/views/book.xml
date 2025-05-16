@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
+    <!-- =============Tree/List View============= -->
    <record id="book_tree_view" model="ir.ui.view"> 
         <field name="name">book.form.tree</field> <!-- View name -->
         <field name="model">book.form</field> <!-- Target model -->
@@ -8,10 +9,91 @@
             <tree>
                 <field name="book_name"/>
                 <field name="serial_number"/>
+                <field name="author_ids"/>
             </tree>
         </field>
     </record>
 
+    <!-- ==============Search View============== -->
+    <record id="book_search_view" model="ir.ui.view">
+        <field name="name">book.search.view</field>
+        <field name="model">book.form</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="book_name" filter_domain="['|',('book_name','ilike', self),('author_ids','ilike', self)]"/>
+                <field name="serial_number"/>
+                <field name="author_ids"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- ============Kanban view============ -->
+    <record id="book_kanban_view" model="ir.ui.view">
+        <field name="name">book.kanban.view</field>
+        <field name="model">book.form</field>
+        <field name="arch" type="xml">
+        <!-- I want 3 or 4 card here -->
+            <kanban> 
+                <field name="book_name"/>
+                <field name="serial_number"/>
+                <field name="author_ids"/>
+                <field name="book_image"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <!-- <img t-att-src="kanban_image('book.form', 'book_image', record.id.raw_value)" style="width: 100px; height: 100px; object-fit: cover;" class="oe_kanban_image"/> -->
+                        <div class="oe_kanban_global_click">
+                            <div class="o_kanban_card">
+                                <strong>Name: </strong><field name="book_name"/><br/>
+                                <strong>Serial Number: </strong><field name="serial_number"/><br/>
+                                <strong>Author: </strong><field name="author_ids"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- ===============Pivot view=============== -->
+    <record id="book_pivot_view" model="ir.ui.view">
+        <field name="name">book.pivot.view</field>
+        <field name="model">book.form</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="book_name" type="row"/>
+                <!-- <field name="serial_number" type="measure"/> -->
+                <field name="book_age" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- ===============Graph view=============== -->
+    <record id="book_graph_view" model="ir.ui.view">
+        <field name="name">book.graph.view</field>
+        <field name="model">book.form</field>
+        <field name="arch" type="xml">
+            <graph>
+                <field name="book_name" type="row"/>
+                <field name="book_age" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+
+    <!-- ===============Graph view=============== -->
+    <record id="book_calendar_view" model="ir.ui.view">
+        <field name="name">book.calendar.view</field>
+        <field name="model">book.form</field>
+        <field name="arch" type="xml">
+            <calendar date_start="published_date">
+                <field name="book_name"/>
+            </calendar>
+        </field>
+</record>
+
+
+
+    <!-- ===========Form View============== -->
     <record id="book_form_view" model="ir.ui.view"> 
         <field name="name">book.form.form</field> <!-- View name -->
         <field name="model">book.form</field> <!-- Target model -->
@@ -22,11 +104,14 @@
                         <button name="orm_search" string="Search" type="object" class="oe_highlight"/>
                         <button name="orm_browse" string="Browse" type="object" class="oe_highlight"/>
                     </header>
+                    <field name="book_image" widget="image" class="oe_avatar"/> <!--If you change the class name this image field is broken-->
                     <group>
                         <group>
                             <field name="book_name"/>
                             <field name="serial_number"/>
                             <field name="total_page"/>
+                        <!-- </group>
+                         <group> -->
                             <field name="published_date"/>
                             <field name="book_age"/>
                             <field name="author_ids"/>
@@ -41,7 +126,7 @@
         <field name="name">Book Info</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">book.form</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,kanban,pivot,graph,calendar</field>
         <field name="context">{}</field>
         <field name="help" type="html">
             <p>Create a window action in library_form file</p>
