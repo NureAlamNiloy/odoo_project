@@ -80,7 +80,7 @@
     </record>
 
 
-    <!-- ===============Graph view=============== -->
+    <!-- ===============Calendar view=============== -->
     <record id="book_calendar_view" model="ir.ui.view">
         <field name="name">book.calendar.view</field>
         <field name="model">book.form</field>
@@ -89,7 +89,7 @@
                 <field name="book_name"/>
             </calendar>
         </field>
-</record>
+    </record>
 
 
 
@@ -110,8 +110,8 @@
                             <field name="book_name"/>
                             <field name="serial_number"/>
                             <field name="total_page"/>
-                        <!-- </group>
-                         <group> -->
+                        </group>
+                        <group>
                             <field name="published_date"/>
                             <field name="book_age"/>
                             <field name="author_ids"/>

@@ -18,6 +18,7 @@
         'views/library_form.xml',
         'views/menu.xml',
         'views/booklist.xml',
+        'data/cron.xml',
     ],
     'installable': True,
     'application': True,

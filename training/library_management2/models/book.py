@@ -21,7 +21,7 @@ class BookModelForm(models.Model):
     @api.depends('published_date') #Which field we depend for our operation 
     def total_age(self):
         if self.published_date:
-            self.book_age = date.today().day - self.published_date.day 
+            self.book_age = date.today().year - self.published_date.year 
         else:
             self.book_age = 0
     
@@ -48,6 +48,13 @@ class BookModelForm(models.Model):
         print("browse ORM output ", book_browse)
         for name in book_browse:
             print(f"book name {name.book_name} Author > {name.author_ids.name}")
+    
+    @api.model
+    def update_book_age(self):
+        books = self.search([])
+        for book in books:
+            if book.published_date:
+                book.book_age = date.today().year - book.published_date.year
 
 
     
