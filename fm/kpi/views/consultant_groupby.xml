@@ -1,9 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!-- your_module/views/sale_report_views.xml -->
 <odoo>
-
-    <record id="" model="ir.ui.view">
-        <field name="name">field_value</field>
-    </record>
+    <!-- <record id="view_order_product_report_search_inherit" model="ir.ui.view">
+        <field name="name">sale.report.search.consultant</field>
+        <field name="model">sale.report</field>
+        <field name="inherit_id" ref="sale.view_order_product_search" />
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='group_by']" position="inside">
+                <filter name="consultant" string="Consultant" context="{'group_by': 'consultant'}"/>
+            </xpath>
+        </field>
+    </record> -->
 
 </odoo>
 

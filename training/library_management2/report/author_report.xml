@@ -1,0 +1,26 @@
+<odoo>
+    <template id="author_report_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <h4>Name: <t t-esc="doc.name"/></h4>
+                <h4>Email: <t t-esc="doc.description"/></h4>
+                <h4>Mobile: <t t-esc="doc.notes"/></h4>
+                <h3>Author Books:</h3>
+                <table style="width: 100%; border-collapse: collapse; font-size: 17px; margin-top: 10px;" class="table table-sm table-bordered">
+                    <thead>
+                        <th style="border: 1px solid #ccc; padding: 5px; text-align: center;">Book Name</th>
+                        <th style="border: 1px solid #ccc; padding: 5px; text-align: center;">Serial Name</th>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="doc.book_ids" t-as="book">
+                            <tr>
+                                <td style="border: 1px solid #ccc; padding: 5px; text-align: center;"><t t-esc="book.book_name"/></td>
+                                <td style="border: 1px solid #ccc; padding: 5px; text-align: center;"><t t-esc="book.serial_number"/></td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </t>
+        </t>
+    </template>
+</odoo>

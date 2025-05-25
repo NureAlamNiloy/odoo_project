@@ -5,11 +5,11 @@
         <field name="inherit_id" ref="sale.view_order_form"/> <!--Whch view you want to change collect this from debug mode views-->
         <field name="arch" type="xml"> <!-- To modify the actual XML layout of the view -->
         <!--field name and positiuon attributes means want to chage attribute invisible="1"-->
-            <xpath expr="//field[@name='user_id']" position="attributes">
+            <!-- <xpath expr="//field[@name='user_id']" position="attributes">
                 <attribute name="invisible">1</attribute>
-            </xpath>
+            </xpath> -->
             <xpath expr="//field[@name='user_id']" position="after">
-                <field name="consultant"/>
+                <field name="consultant" context="{'group_by': 'consultant'}"/>
             </xpath>
         </field>
     </record>

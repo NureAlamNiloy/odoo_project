@@ -1,0 +1,27 @@
+<odoo>
+
+    <!-- Record for PDF report -->
+    <record id="author_pdf_report" model="ir.actions.report">
+        <field name="name">Author Books</field>
+        <field name="model">library.form</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">library_management2.author_report_template</field>
+        <field name="report_file">library_management2.author_report_template</field>
+        <field name="binding_model_id" ref="library_management2.model_library_form"/>
+        <field name="binding_type">report</field>
+    </record>
+
+
+    <!-- Record for Excel report -->
+    <record id="author_xlsx_report" model="ir.actions.report">
+        <field name="name">Author Books</field>
+        <field name="model">library.form</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">library_management2.author_xlsx_report</field>
+        <field name="binding_model_id" ref="library_management2.model_library_form"/>
+        <field name="binding_type">report</field>
+    </record>
+
+
+
+</odoo>
