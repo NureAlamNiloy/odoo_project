@@ -10,7 +10,7 @@
     'summary': 'Library Management System.. This is for my day01 task',
     'website': 'https://www.linkedin.com/in/NureAlamNiloy',
     'depends': [
-        'base', 'stock', 'product', 'report_xlsx'
+        'base', 'stock', 'product', 'report_xlsx', 'account'
     ],
     'data': [ 
         'security/ir.model.access.csv',

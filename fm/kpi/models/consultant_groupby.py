@@ -6,9 +6,11 @@ class ConsultantGroupByFilter(models.Model):
     consultant = fields.Many2one("hr.employee", string="Consultant", readonly=True)
 
     def _select(self):
-        res = super()._select() + ", s.consultant as consultant"
+        res = super()._select()
+        res += ", s.consultant as consultant"
         return res
-    
+
     def _group_by(self):
-        res = super()._group_by() + ", s.consultant"
+        res = super()._group_by()
+        res += ", s.consultant"
         return res

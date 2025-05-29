@@ -23,6 +23,13 @@
                 <field name="book_name" filter_domain="['|',('book_name','ilike', self),('author_ids','ilike', self)]"/>
                 <field name="serial_number"/>
                 <field name="author_ids"/>
+                
+                <!-- Side bar filter -->
+                <searchpanel>
+                <!-- here name="Field name" -->
+                    <field name="author_ids" string="Authors"/>
+                </searchpanel>
+
             </search>
         </field>
     </record>

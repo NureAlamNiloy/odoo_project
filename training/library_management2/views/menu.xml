@@ -4,4 +4,6 @@
     <menuitem id="author_main_menu" parent="library_main_menu" name="Author"/>
     <menuitem id="author_book_menu" parent="author_main_menu" action="library_action" name="Author Books"/>
     <menuitem id="book_menu" parent="library_main_menu" action="book_action" name="Books"/>
+      <!-- Invoice menue -->
+    <menuitem id="invoices" parent="library_main_menu" name="Invoice" action="account.action_move_out_invoice_type" />
 </odoo>

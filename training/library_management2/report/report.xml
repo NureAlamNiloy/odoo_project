@@ -14,7 +14,7 @@
 
     <!-- Record for Excel report -->
     <record id="author_xlsx_report" model="ir.actions.report">
-        <field name="name">Author Books</field>
+        <field name="name">Author XLSX</field>
         <field name="model">library.form</field>
         <field name="report_type">xlsx</field>
         <field name="report_name">library_management2.author_xlsx_report</field>

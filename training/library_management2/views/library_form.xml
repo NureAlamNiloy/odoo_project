@@ -6,7 +6,8 @@
         <field name="arch" type="xml"> <!-- Actual View -->
             <tree>
                 <field name="name"/>
-                <field name="description"/>
+                <field name="author_mail"/>
+                <field name="author_mobile"/>
             </tree>
         </field>
     </record>
@@ -20,8 +21,10 @@
                     <group>
                         <group>
                             <field name="name"/>
-                            <field name="description"/>
-                            <field name="notes"/>
+                            <field name="author_mail"/>
+                            <field name="author_mobile"/>
+                            <field name="author_gender"/>
+                            <field name="author_nationality"/>
                         </group>
                     </group>
                     <notebook>
@@ -39,6 +42,39 @@
         </field>
     </record>
 
+    <!-- ==============Search View============== -->
+    <record id="library_search_view" model="ir.ui.view">
+        <field name="name">library.search.view</field>
+        <field name="model">library.form</field>
+        <field name="arch" type="xml">
+            <search>
+                <!-- Field Search Filter -->
+                <field name="name" filter_domain="['|',('name','ilike', self),('author_mail','ilike', self)]"/>
+                <field name="author_mail"/> 
+                <field name="author_mobile"/>
+
+                <!-- Group By Filter -->
+                <group string="Group By">
+                    <filter string="Gender" name="group_by_author_gender" context="{'group_by': 'author_gender'}" />
+                    <filter string="Nationality" name="group_by_author_nationality" context="{'group_by': 'author_nationality'}" />
+                </group>
+
+                <!-- Filters -->
+                <filter name="author_gender_male" string="Male" domain="[('author_gender', '=', 'male')]" />
+                <!-- name="Aunique name" string="Name of this field" -->
+                <filter name="author_gender_female" string="Female" domain="[('author_gender', '=', 'female')]" />
+
+                <!-- Side bar filter -->
+                <searchpanel>
+                <!-- here name="Field name" -->
+                    <field name="author_gender" string="Gender"/>
+                </searchpanel>
+                
+            </search>
+        </field>
+    </record>
+
+
 
     <record id="library_action" model="ir.actions.act_window">
         <field name="name">Library Management System</field>
@@ -51,6 +87,6 @@
         </field>
     </record>
 
-    
+  
 </odoo>
 

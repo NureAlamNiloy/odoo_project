@@ -33,8 +33,9 @@ class BookModelForm(models.Model):
 
     @api.constrains('total_page', 'published_date')
     def validation(self):
-        if self.total_page <10:
-            raise ValidationError("Total pages must be at least 10.")
+        if self.published_date:
+            if self.total_page <10:
+                raise ValidationError("Total pages must be at least 10.")
 
 
     def orm_search(self):
